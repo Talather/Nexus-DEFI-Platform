@@ -1,0 +1,69 @@
+[
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "name": "poolId", "type": "uint256" },
+      { "indexed": false, "name": "stakingToken", "type": "address" },
+      { "indexed": false, "name": "rewardToken", "type": "address" },
+      { "indexed": false, "name": "rewardRate", "type": "uint256" },
+      { "indexed": false, "name": "lockDuration", "type": "uint256" }
+    ],
+    "name": "PoolCreated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "name": "user", "type": "address" },
+      { "indexed": true, "name": "poolId", "type": "uint256" },
+      { "indexed": false, "name": "amount", "type": "uint256" },
+      { "indexed": false, "name": "timestamp", "type": "uint256" }
+    ],
+    "name": "Staked",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "name": "user", "type": "address" },
+      { "indexed": true, "name": "poolId", "type": "uint256" },
+      { "indexed": false, "name": "amount", "type": "uint256" },
+      { "indexed": false, "name": "penalty", "type": "uint256" },
+      { "indexed": false, "name": "timestamp", "type": "uint256" }
+    ],
+    "name": "Unstaked",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "name": "user", "type": "address" },
+      { "indexed": true, "name": "poolId", "type": "uint256" },
+      { "indexed": false, "name": "amount", "type": "uint256" },
+      { "indexed": false, "name": "timestamp", "type": "uint256" }
+    ],
+    "name": "RewardClaimed",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "name": "user", "type": "address" },
+      { "indexed": true, "name": "poolId", "type": "uint256" },
+      { "indexed": false, "name": "amount", "type": "uint256" },
+      { "indexed": false, "name": "timestamp", "type": "uint256" }
+    ],
+    "name": "RewardCompounded",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "name": "poolId", "type": "uint256" },
+      { "indexed": false, "name": "newRewardRate", "type": "uint256" },
+      { "indexed": false, "name": "active", "type": "bool" }
+    ],
+    "name": "PoolUpdated",
+    "type": "event"
+  }
+]

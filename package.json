@@ -1,0 +1,20 @@
+{
+  "name": "nexus-defi-platform",
+  "version": "1.0.0",
+  "description": "Production-grade fullstack Web3 DeFi staking platform",
+  "private": true,
+  "workspaces": ["contracts", "frontend", "subgraph"],
+  "scripts": {
+    "contracts:compile": "cd contracts && npx hardhat compile",
+    "contracts:test": "cd contracts && npx hardhat test",
+    "contracts:deploy:local": "cd contracts && npx hardhat run scripts/deploy.ts --network localhost",
+    "contracts:deploy:sepolia": "cd contracts && npx hardhat run scripts/deploy.ts --network sepolia",
+    "frontend:dev": "cd frontend && npm run dev",
+    "frontend:build": "cd frontend && npm run build",
+    "subgraph:codegen": "cd subgraph && graph codegen",
+    "subgraph:build": "cd subgraph && graph build",
+    "subgraph:deploy": "cd subgraph && graph deploy --node https://api.studio.thegraph.com/deploy/ nexus-defi"
+  },
+  "keywords": ["defi", "staking", "web3", "ethereum"],
+  "license": "MIT"
+}

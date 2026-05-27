@@ -1,0 +1,18 @@
+export const NexusStakingABI = [
+  { inputs: [{ name: "defaultAdmin", type: "address" }], stateMutability: "nonpayable", type: "constructor" },
+  { inputs: [{ name: "_poolId", type: "uint256" }, { name: "_amount", type: "uint256" }], name: "stake", outputs: [], stateMutability: "nonpayable", type: "function" },
+  { inputs: [{ name: "_poolId", type: "uint256" }, { name: "_amount", type: "uint256" }], name: "unstake", outputs: [], stateMutability: "nonpayable", type: "function" },
+  { inputs: [{ name: "_poolId", type: "uint256" }], name: "claimReward", outputs: [], stateMutability: "nonpayable", type: "function" },
+  { inputs: [{ name: "_poolId", type: "uint256" }], name: "compoundReward", outputs: [], stateMutability: "nonpayable", type: "function" },
+  { inputs: [{ name: "_poolId", type: "uint256" }], name: "emergencyWithdraw", outputs: [], stateMutability: "nonpayable", type: "function" },
+  { inputs: [{ name: "_poolId", type: "uint256" }, { name: "_user", type: "address" }], name: "earned", outputs: [{ name: "", type: "uint256" }], stateMutability: "view", type: "function" },
+  { inputs: [{ name: "_poolId", type: "uint256" }, { name: "_user", type: "address" }], name: "getUserStake", outputs: [{ name: "amount", type: "uint256" }, { name: "pendingRewards", type: "uint256" }, { name: "stakeTimestamp", type: "uint256" }, { name: "lockEndsAt", type: "uint256" }, { name: "isLocked", type: "bool" }], stateMutability: "view", type: "function" },
+  { inputs: [{ name: "_poolId", type: "uint256" }], name: "getAPY", outputs: [{ name: "", type: "uint256" }], stateMutability: "view", type: "function" },
+  { inputs: [], name: "poolCount", outputs: [{ name: "", type: "uint256" }], stateMutability: "view", type: "function" },
+  { inputs: [], name: "totalValueLocked", outputs: [{ name: "", type: "uint256" }], stateMutability: "view", type: "function" },
+  { inputs: [{ name: "", type: "uint256" }], name: "pools", outputs: [{ name: "stakingToken", type: "address" }, { name: "rewardToken", type: "address" }, { name: "totalStaked", type: "uint256" }, { name: "rewardRate", type: "uint256" }, { name: "lastUpdateTime", type: "uint256" }, { name: "rewardPerTokenStored", type: "uint256" }, { name: "lockDuration", type: "uint256" }, { name: "earlyUnstakePenalty", type: "uint256" }, { name: "maxStake", type: "uint256" }, { name: "active", type: "bool" }], stateMutability: "view", type: "function" },
+  { anonymous: false, inputs: [{ indexed: true, name: "user", type: "address" }, { indexed: true, name: "poolId", type: "uint256" }, { indexed: false, name: "amount", type: "uint256" }, { indexed: false, name: "timestamp", type: "uint256" }], name: "Staked", type: "event" },
+  { anonymous: false, inputs: [{ indexed: true, name: "user", type: "address" }, { indexed: true, name: "poolId", type: "uint256" }, { indexed: false, name: "amount", type: "uint256" }, { indexed: false, name: "penalty", type: "uint256" }, { indexed: false, name: "timestamp", type: "uint256" }], name: "Unstaked", type: "event" },
+  { anonymous: false, inputs: [{ indexed: true, name: "user", type: "address" }, { indexed: true, name: "poolId", type: "uint256" }, { indexed: false, name: "amount", type: "uint256" }, { indexed: false, name: "timestamp", type: "uint256" }], name: "RewardClaimed", type: "event" },
+  { anonymous: false, inputs: [{ indexed: true, name: "user", type: "address" }, { indexed: true, name: "poolId", type: "uint256" }, { indexed: false, name: "amount", type: "uint256" }, { indexed: false, name: "timestamp", type: "uint256" }], name: "RewardCompounded", type: "event" },
+] as const;

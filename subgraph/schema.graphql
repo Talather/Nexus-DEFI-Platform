@@ -1,0 +1,82 @@
+type Pool @entity {
+  id: ID!
+  poolId: BigInt!
+  stakingToken: Bytes!
+  rewardToken: Bytes!
+  rewardRate: BigInt!
+  lockDuration: BigInt!
+  totalStaked: BigInt!
+  active: Boolean!
+  createdAt: BigInt!
+  stakes: [Stake!]! @derivedFrom(field: "pool")
+}
+
+type User @entity {
+  id: ID!
+  address: Bytes!
+  totalStaked: BigInt!
+  totalRewardsClaimed: BigInt!
+  totalRewardsCompounded: BigInt!
+  stakesCount: Int!
+  firstStakeAt: BigInt
+  stakes: [Stake!]! @derivedFrom(field: "user")
+  claims: [RewardClaim!]! @derivedFrom(field: "user")
+  compounds: [RewardCompound!]! @derivedFrom(field: "user")
+  unstakes: [Unstake!]! @derivedFrom(field: "user")
+}
+
+type Stake @entity {
+  id: ID!
+  user: User!
+  pool: Pool!
+  amount: BigInt!
+  timestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Unstake @entity {
+  id: ID!
+  user: User!
+  pool: Pool!
+  amount: BigInt!
+  penalty: BigInt!
+  timestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type RewardClaim @entity {
+  id: ID!
+  user: User!
+  pool: Pool!
+  amount: BigInt!
+  timestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type RewardCompound @entity {
+  id: ID!
+  user: User!
+  pool: Pool!
+  amount: BigInt!
+  timestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ProtocolStat @entity {
+  id: ID!
+  totalValueLocked: BigInt!
+  totalUsersCount: Int!
+  totalStakesCount: Int!
+  totalClaimsCount: Int!
+  totalRewardsDistributed: BigInt!
+}
+
+type DailySnapshot @entity {
+  id: ID!
+  date: Int!
+  totalValueLocked: BigInt!
+  dailyStaked: BigInt!
+  dailyUnstaked: BigInt!
+  dailyRewardsClaimed: BigInt!
+  newUsersCount: Int!
+}
