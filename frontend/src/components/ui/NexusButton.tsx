@@ -1,15 +1,19 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ReactNode, ButtonHTMLAttributes } from "react";
+import { ReactNode } from "react";
 import clsx from "clsx";
 
-interface NexusButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface NexusButtonProps {
   children: ReactNode;
   variant?: "primary" | "secondary" | "gold" | "danger" | "ghost";
   size?: "sm" | "md" | "lg";
   loading?: boolean;
   icon?: ReactNode;
+  className?: string;
+  disabled?: boolean;
+  onClick?: () => void;
+  type?: "button" | "submit" | "reset";
 }
 
 export function NexusButton({ children, variant = "primary", size = "md", loading, icon, className, disabled, ...props }: NexusButtonProps) {
