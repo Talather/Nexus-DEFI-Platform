@@ -1,8 +1,10 @@
 "use client";
 
 import { useRef, useMemo } from "react";
-import { useFrame } from "@react-three/fiber";
+import { useFrame, extend } from "@react-three/fiber";
 import * as THREE from "three";
+
+extend({ Line_: THREE.Line });
 
 function NetworkNode({ position, delay }: { position: [number, number, number]; delay: number }) {
   const meshRef = useRef<THREE.Mesh>(null);
@@ -36,10 +38,11 @@ function NetworkNode({ position, delay }: { position: [number, number, number]; 
 function ConnectionLine({ start, end }: { start: [number, number, number]; end: [number, number, number] }) {
   const lineRef = useRef<THREE.Line>(null);
 
-  const geometry = useMemo(() => {
+  const lineObj = useMemo(() => {
     const g = new THREE.BufferGeometry();
     g.setAttribute("position", new THREE.Float32BufferAttribute([...start, ...end], 3));
-    return g;
+    const mat = new THREE.LineBasicMaterial({ color: "#00BFA5", transparent: true, opacity: 0.3 });
+    return new THREE.Line(g, mat);
   }, [start, end]);
 
   useFrame((state) => {
@@ -48,11 +51,7 @@ function ConnectionLine({ start, end }: { start: [number, number, number]; end: 
     mat.opacity = 0.2 + Math.sin(state.clock.elapsedTime * 2) * 0.15;
   });
 
-  return (
-    <line ref={lineRef as any} geometry={geometry}>
-      <lineBasicMaterial color="#00BFA5" transparent opacity={0.3} />
-    </line>
-  );
+  return <primitive ref={lineRef} object={lineObj} />;
 }
 
 export function BlockchainNetwork() {
